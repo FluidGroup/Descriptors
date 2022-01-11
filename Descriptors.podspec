@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.author = { "Muukii" => "muukii.app@gmail.com" }
   spec.social_media_url = "https://twitter.com/muukii_app"
 
-  spec.ios.deployment_target = "12.0"
+  spec.ios.deployment_target = "10.0"
 
   spec.source = { :git => "https://github.com/muukii/Descriptors.git", :tag => "#{spec.version}" }
   spec.framework = "UIKit"

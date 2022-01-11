@@ -3,6 +3,7 @@ PODS:
     - CompositionKit/Core (= 0.1.0)
     - MondrianLayout (>= 0.8.0)
   - CompositionKit/Core (0.1.0):
+    - Descriptors (>= 0.1.0)
     - MondrianLayout (>= 0.8.0)
   - Descriptors (0.1.0):
     - Descriptors/Core (= 0.1.0)
@@ -16,6 +17,7 @@ PODS:
     - TextureSwiftSupport/Extensions (= 3.13.0)
     - TextureSwiftSupport/LayoutSpecBuilders (= 3.13.0)
   - TextureSwiftSupport/Components (3.13.0):
+    - Descriptors (>= 0.1.0)
     - Texture/Core (>= 3)
     - TextureSwiftSupport/LayoutSpecBuilders
   - TextureSwiftSupport/Experiments (3.13.0):
@@ -44,11 +46,11 @@ EXTERNAL SOURCES:
     :path: "../Submodules/TextureSwiftSupport"
 
 SPEC CHECKSUMS:
-  CompositionKit: fc25b4df3afd862359f8e9d92dce1f621c05bffb
-  Descriptors: 2dec52182935a434006bde799854e3f722a8909b
+  CompositionKit: 20355eed70a9351c9816c2e62126386814452b01
+  Descriptors: 65cac3325f4a35e38ac3a0a341a12da99709a54a
   MondrianLayout: 9f16c5ddf0fd50f32a787987ca538677f1de5908
   Texture: 2e8ab2519452515f7f5a520f5a8f7e0a413abfa3
-  TextureSwiftSupport: c515c7927fab92d0d9485f49b885b8c5de34fbfb
+  TextureSwiftSupport: d7b30614e8825650f87caa8d5b410c2bafcdaadf
 
 PODFILE CHECKSUM: 9387bfd6a76aa9ead24f816ebc9dfe5c16f9ead3
 
