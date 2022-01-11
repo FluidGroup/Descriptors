@@ -1,3 +1,5 @@
 # Descriptors
 
-A description of this package.
+Provides for:
+- [TextureSwiftSupport](https://github.com/TextureCommunity/TextureSwiftSupport)
+- [CompositionKit](https://github.com/muukii/CompositionKit)
