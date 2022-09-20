@@ -1,6 +1,0 @@
-[submodule "Submodules/TextureSwiftSupport"]
-	path = Submodules/TextureSwiftSupport
-	url = git@github.com:TextureCommunity/TextureSwiftSupport.git
-[submodule "Submodules/CompositionKit"]
-	path = Submodules/CompositionKit
-	url = git@github.com:muukii/CompositionKit.git
