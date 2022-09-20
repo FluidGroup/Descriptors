@@ -1,0 +1,6 @@
+[submodule "Submodules/TextureSwiftSupport"]
+	path = Submodules/TextureSwiftSupport
+	url = https://github.com/FluidGroup/TextureSwiftSupport.git
+[submodule "Submodules/CompositionKit"]
+	path = Submodules/CompositionKit
+	url = https://github.com/FluidGroup/CompositionKit.git
