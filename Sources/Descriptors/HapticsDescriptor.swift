@@ -21,22 +21,23 @@
 
 import UIKit
 
-public struct HapticsDescriptor {
+public struct HapticsDescriptor: Sendable {
 
-  public enum Event: Equatable {
+  public enum Event: Equatable, Sendable {
     case onTouchDownInside
     case onTouchUpInside
     case onLongPress
   }
 
-  private let _onReceiveEvent: (Event) -> Void
+  private let _onReceiveEvent: @MainActor (Event) -> Void
 
   public init(
-    onReceiveEvent: @escaping (Event) -> Void
+    onReceiveEvent: @escaping @MainActor (Event) -> Void
   ) {
     self._onReceiveEvent = onReceiveEvent
   }
 
+  @MainActor
   public func send(event: Event) {
     _onReceiveEvent(event)
   }
@@ -49,9 +50,10 @@ extension HapticsDescriptor {
     delay: DispatchTimeInterval = .seconds(0)
   ) -> Self {
 
-    let feedbackGenerator = UIImpactFeedbackGenerator(style: style)
-
     return self.init { event in
+      
+      let feedbackGenerator = UIImpactFeedbackGenerator(style: style)
+      
       if case .onTouchUpInside = event {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
           feedbackGenerator.impactOccurred()

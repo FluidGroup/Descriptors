@@ -21,7 +21,7 @@
 
 import UIKit
 
-public struct HighlightAnimationDescriptor {
+public struct HighlightAnimationDescriptor: Sendable {
 
   public final class Context {
 
@@ -43,16 +43,16 @@ public struct HighlightAnimationDescriptor {
     }
   }
 
-  private let _prepare: (Context) -> Void
+  private let _prepare: @MainActor (Context) -> Void
 
   public init(
-    prepare: @escaping (Context) -> Void
+    prepare: @escaping @MainActor (Context) -> Void
   ) {
     self._prepare = prepare
   }
 
+  @MainActor
   public func prepare() -> Context {
-    assert(Thread.isMainThread)
     let context = Context()
     _prepare(context)
     return context

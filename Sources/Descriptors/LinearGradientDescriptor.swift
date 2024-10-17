@@ -1,6 +1,6 @@
 import UIKit
 
-public struct GradientColor: Hashable {
+public struct GradientColor: Hashable, Sendable {
   
   public let color: UIColor
   public let location: CGFloat
@@ -14,7 +14,7 @@ public struct GradientColor: Hashable {
   }
 }
 
-public struct GradientSource: Hashable {
+public struct GradientSource: Hashable, Sendable {
   
   public let colors: [GradientColor]
   public let identifier: String
@@ -26,7 +26,7 @@ public struct GradientSource: Hashable {
   
 }
 
-public struct LinearGradientDescriptor: Equatable {
+public struct LinearGradientDescriptor: Equatable, Sendable {
 
   // MARK: - Properties
   
