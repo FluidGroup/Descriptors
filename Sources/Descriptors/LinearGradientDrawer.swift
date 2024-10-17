@@ -1,7 +1,7 @@
 
 import UIKit
 
-public struct LinearGradientDrawer {
+public struct LinearGradientDrawer: Sendable {
 
   // MARK: - Properties
 
