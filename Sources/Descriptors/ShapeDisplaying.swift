@@ -14,6 +14,22 @@ public protocol ShapeDisplaying: AnyObject {
   var shapeStrokeColor: UIColor? { get set }
 }
 
+public protocol MainActorShapeDisplaying: AnyObject {
+
+    typealias Update = @MainActor (CGRect) -> UIBezierPath
+
+    init(update: @escaping Update)
+
+    @MainActor
+    var shapeFillColor: UIColor? { get set }
+
+    @MainActor
+    var shapeLineWidth: CGFloat { get set }
+
+    @MainActor
+    var shapeStrokeColor: UIColor? { get set }
+}
+
 extension ShapeDisplaying {
 
   @discardableResult
@@ -36,7 +52,32 @@ extension ShapeDisplaying {
 
 }
 
-public enum CupsuleShapeDirection {
+extension MainActorShapeDisplaying {
+
+    @discardableResult
+    @MainActor
+    public func setShapeFillColor(_ color: UIColor) -> Self {
+        self.shapeFillColor = color
+        return self
+    }
+
+    @discardableResult
+    @MainActor
+    public func setShapeLineWidth(_ width: CGFloat) -> Self {
+        self.shapeLineWidth = width
+        return self
+    }
+
+    @discardableResult
+    @MainActor
+    public func setStrokeColor(_ color: UIColor) -> Self {
+        self.shapeStrokeColor = color
+        return self
+    }
+
+}
+
+public enum CapsuleShapeDirection {
   case vertical
   case horizontal
 }
@@ -49,7 +90,7 @@ extension ShapeDisplaying {
   ///   - direction:
   ///   - usesSmoothCurve: SmoothCurve means Apple's using corner rouding. For example, Home App Icon's curve.
   /// - Returns: An instance
-  public static func capsule(direction: CupsuleShapeDirection, usesSmoothCurve: Bool) -> Self {
+  public static func capsule(direction: CapsuleShapeDirection, usesSmoothCurve: Bool) -> Self {
     return self.init { bounds in
       guard usesSmoothCurve else {
         return UIBezierPath.init(roundedRect: bounds, cornerRadius: .infinity)
@@ -73,5 +114,43 @@ extension ShapeDisplaying {
       UIBezierPath.init(roundedRect: bounds, cornerRadius: radius)
     }
   }
+
+}
+
+extension MainActorShapeDisplaying {
+
+    /// Returns an instance that displays capsule shape
+    ///
+    /// - Parameters:
+    ///   - direction:
+    ///   - usesSmoothCurve: SmoothCurve means Apple's using corner rouding. For example, Home App Icon's curve.
+    /// - Returns: An instance
+    ///
+    @MainActor
+    public static func capsule(direction: CapsuleShapeDirection, usesSmoothCurve: Bool) -> Self {
+        return self.init { bounds in
+            guard usesSmoothCurve else {
+                return UIBezierPath.init(roundedRect: bounds, cornerRadius: .infinity)
+            }
+            switch direction {
+            case .horizontal:
+                return UIBezierPath.init(roundedRect: bounds, cornerRadius: bounds.height / 2)
+            case .vertical:
+                return UIBezierPath.init(roundedRect: bounds, cornerRadius: bounds.width / 2)
+            }
+        }
+    }
+
+    /// Returns an instance that displays rounded corner shape.
+    /// Rounded corner uses smooth-curve
+    ///
+    /// - Parameter radius:
+    /// - Returns:
+    @MainActor
+    public static func roundedCorner(radius: CGFloat) -> Self {
+        return self.init { bounds in
+            UIBezierPath.init(roundedRect: bounds, cornerRadius: radius)
+        }
+    }
 
 }
