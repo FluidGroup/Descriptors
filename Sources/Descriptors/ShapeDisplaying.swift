@@ -126,7 +126,6 @@ extension MainActorShapeDisplaying {
     ///   - usesSmoothCurve: SmoothCurve means Apple's using corner rouding. For example, Home App Icon's curve.
     /// - Returns: An instance
     ///
-    @MainActor
     public static func capsule(direction: CapsuleShapeDirection, usesSmoothCurve: Bool) -> Self {
         return self.init { bounds in
             guard usesSmoothCurve else {
@@ -146,7 +145,6 @@ extension MainActorShapeDisplaying {
     ///
     /// - Parameter radius:
     /// - Returns:
-    @MainActor
     public static func roundedCorner(radius: CGFloat) -> Self {
         return self.init { bounds in
             UIBezierPath.init(roundedRect: bounds, cornerRadius: radius)
