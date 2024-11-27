@@ -77,7 +77,7 @@ extension MainActorShapeDisplaying {
 
 }
 
-public enum CapsuleShapeDirection {
+public enum CapsuleShapeDirection: Sendable {
   case vertical
   case horizontal
 }
