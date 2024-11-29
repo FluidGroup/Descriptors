@@ -45,6 +45,7 @@ public struct HapticsDescriptor: Sendable {
 
 extension HapticsDescriptor {
 
+  @MainActor
   public static func impactOnTouchUpInside(
     style: UIImpactFeedbackGenerator.FeedbackStyle = .light,
     delay: DispatchTimeInterval = .seconds(0)
